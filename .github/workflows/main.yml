@@ -13,13 +13,12 @@ jobs:
       COV_URL: ${{ secrets.COV_URL }}
       COV_USER: ${{ secrets.COV_USER }}
       COVERITY_PASSPHRASE: ${{ secrets.COVERITY_PASSPHRASE }}
-      COVERITY_PROJECT: insecure-bank
-      COVBIN: /opt/coverity/analysis/current/bin
-      BLDCMD: mvn -B clean compile
+      COVERITY_PROJECT: NodeGoat
+      COVBIN: C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin
+      BLDCMD: --no-command
       CHECKERS: --webapp-security
  
     steps:
-    - uses: AutoModality/action-clean@v1
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v1
       with:
