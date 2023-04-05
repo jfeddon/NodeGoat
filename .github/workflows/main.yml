@@ -26,7 +26,7 @@ jobs:
    
     - name: Coverity Full Scan
       run: |
-        $COVBIN\cov-build --dir idir --fs-capture-search $GITHUB_WORKSPACE $BLDCMD
-        $COVBIN\cov-analyze --dir idir --ticker-mode none --strip-path $GITHUB_WORKSPACE $CHECKERS
-        $COVBIN\cov-commit-defects --dir idir --ticker-mode none --url $COV_URL --stream $COVERITY_PROJECT-${GITHUB_REF##*/} --scm git \
+        $COVBIN\cov-build.exe --dir idir --fs-capture-search $GITHUB_WORKSPACE $BLDCMD
+        $COVBIN\cov-analyze.exe --dir idir --ticker-mode none --strip-path $GITHUB_WORKSPACE $CHECKERS
+        $COVBIN\cov-commit-defects.exe --dir idir --ticker-mode none --url $COV_URL --stream $COVERITY_PROJECT-${GITHUB_REF##*/} --scm git \
           --description $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID --target $RUNNER_OS --version $GITHUB_SHA
