@@ -16,7 +16,7 @@ jobs:
       COVERITY_STREAM: nodegoat
       COVBIN: C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin
       BLDCMD: --no-command
-      CHECKERS: --webapp-security
+      CHECKERS: --all --webapp-security
  
     steps:
     - uses: actions/checkout@v2
@@ -27,5 +27,5 @@ jobs:
     - name: Coverity Full Scan
       run: |
         C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-build.exe --dir idir --fs-capture-search $env:GITHUB_WORKSPACE $env:BLDCMD
-        C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-analyze.exe --dir idir --ticker-mode none --all
+        C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-analyze.exe --dir idir --ticker-mode none $env:CHECKERS
         C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-commit-defects.exe --dir idir --ticker-mode none --url $env:COV_URL --stream $env:COVERITY_STREAM --user $env:COV_USER --password $env:COVERITY_PASSPHRASE
