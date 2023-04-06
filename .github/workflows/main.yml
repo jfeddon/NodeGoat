@@ -26,6 +26,6 @@ jobs:
    
     - name: Coverity Full Scan
       run: |
-        C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-build.exe --dir idir --fs-capture-search . --no-command
+        C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-build.exe --dir idir --fs-capture-search . %BLDCMD%
         C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-analyze.exe --dir idir --ticker-mode none --all
         C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-commit-defects.exe --dir idir --ticker-mode none --url http://localhost:8080 --stream nodegoat --user admin --password coverity
