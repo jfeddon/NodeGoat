@@ -10,9 +10,9 @@ jobs:
     runs-on: self-hosted
  
     env:
-      COV_URL: ${{ secrets.COV_URL }}
-      COV_USER: ${{ secrets.COV_USER }}
-      COVERITY_PASSPHRASE: ${{ secrets.COVERITY_PASSPHRASE }}
+      COV_URL: http://localhost:8080
+      COV_USER: admin
+      COVERITY_PASSPHRASE: coverity
       COVERITY_STREAM: nodegoat
       COVBIN: C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin
       BLDCMD: --no-command
@@ -28,4 +28,4 @@ jobs:
       run: |
         C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-build.exe --dir idir --fs-capture-search $env:GITHUB_WORKSPACE $env:BLDCMD
         C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-analyze.exe --dir idir --ticker-mode none --all
-        C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-commit-defects.exe --dir idir --ticker-mode none --url http://localhost:8080 --stream $env:COVERITY_STREAM --user $env:COV_USER --password $env:COVERITY_PASSPHRASE
+        C:\Users\JeffreyFeddon\Coverity\CA_2022.12\bin\cov-commit-defects.exe --dir idir --ticker-mode none --url $env:COV_URL --stream $env:COVERITY_STREAM --user $env:COV_USER --password $env:COVERITY_PASSPHRASE
