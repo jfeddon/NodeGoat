@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted
  
     env:
-      COV_URL: http://localhost:8080
+      COV_URL: ${{ secrets.COV_URL }}
       COV_USER: admin
       COVERITY_PASSPHRASE: coverity
       COVERITY_STREAM: nodegoat
